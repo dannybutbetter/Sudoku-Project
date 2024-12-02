@@ -1,63 +1,28 @@
 import math,random
 
-"""
-This was adapted from a GeeksforGeeks article "Program for Sudoku Generator" by Aarti_Rathi and Ankur Trisal
-https://www.geeksforgeeks.org/program-sudoku-generator/
-
-"""
-
 class SudokuGenerator:
-    '''
-	create a sudoku board - initialize class variables and set up the 2D board
-	This should initialize:
-	self.row_length		- the length of each row
-	self.removed_cells	- the total number of cells to be removed
-	self.board			- a 2D list of ints to represent the board
-	self.box_length		- the square root of row_length
 
-	Parameters:
-    row_length is the number of rows/columns of the board (always 9 for this project)
-    removed_cells is an integer value - the number of cells to be removed
-
-	Return:
-	None
-    '''
-    def __init__(self, row_length, removed_cells):
-        pass
-
-    '''
-	Returns a 2D python list of numbers which represents the board
-
-	Parameters: None
-	Return: list[list]
-    '''
-    def get_board(self):
-        pass
-
-    '''
-	Displays the board to the console
-    This is not strictly required, but it may be useful for debugging purposes
-
-	Parameters: None
-	Return: None
-    '''
-    def print_board(self):
-        pass
-
-    '''
-	Determines if num is contained in the specified row (horizontal) of the board
-    If num is already in the specified row, return False. Otherwise, return True
-
-	Parameters:
-	row is the index of the row we are checking
-	num is the value we are looking for in the row
+	def __init__(self, row_length, removed_cells):
+		self.row_length = row_length
+        	self.removed_cells = removed_cells
+        	self.board = [[0 for _ in range(row_length)] for _ in range(row_length)]
+        	self.box_length = int(math.sqrt(row_length))
 	
-	Return: boolean
-    '''
-    def valid_in_row(self, row, num):
-        pass
+	def get_board(self):
+        	return self.board
 
-    '''
+
+
+	def print_board(self):
+        	for row in self.board:
+            		print(" ".join(str(num) if num != 0 else "." for num in row))
+
+    	def valid_in_row(self, row, num):
+        """
+        Checks if the given number is valid in the specified row.
+        """
+        	return num not in self.board[row]
+
 	Determines if num is contained in the specified column (vertical) of the board
     If num is already in the specified col, return False. Otherwise, return True
 
